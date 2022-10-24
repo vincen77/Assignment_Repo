@@ -54,16 +54,9 @@
                 <router-link class="navbar-item" to="/about">
                   About
                 </router-link>
-                <a class="navbar-item">
-                  Jobs
-                </a>
-                <a class="navbar-item">
-                  Contact
-                </a>
-                <hr class="navbar-divider">
-                <a class="navbar-item">
-                  Report an issue
-                </a>
+                <router-link class="navbar-item" to="/admin">
+                  Admin
+                </router-link>
               </div>
             </div>
           </div>
@@ -71,7 +64,8 @@
           <div class="navbar-end">
             <div class="navbar-item">
 
-              <login-badge></login-badge>
+              <login-badge>
+              </login-badge>
             </div>
           </div>
         </div>

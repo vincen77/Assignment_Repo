@@ -6,6 +6,6 @@
     </div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="ts">
 
 </style>

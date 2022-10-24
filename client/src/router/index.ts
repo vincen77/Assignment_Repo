@@ -5,6 +5,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import MyActivityVue from '../views/MyActivity.vue'
 import StoreView from '../views/MyActivity.vue'
+import SignUp from '../views/SignUp.vue'
+import Admin from '../views/Admin.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -38,6 +40,16 @@ const router = createRouter({
       path: '/stats',
       name: 'statistics',
       component: StatisticsVue
+    },
+    {
+      path: '/signup',
+      name: 'sign up',
+      component: SignUp
+    },
+    {
+      path: '/admin',
+      name: 'admin',
+      component: Admin
     }
   ]
 })
