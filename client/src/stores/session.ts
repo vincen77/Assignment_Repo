@@ -1,4 +1,5 @@
 import { reactive } from "vue";
+import router from "@/router";
 
 const session = reactive( {
     user: null as User | null,

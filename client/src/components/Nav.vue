@@ -28,6 +28,10 @@
             <router-link to="/" class="navbar-item">
               Home
             </router-link>
+
+            <router-link to="/workout" class="navbar-item">
+            Workout
+            </router-link>
       
             <router-link class="navbar-item" to="/myactivity">
               My Activity

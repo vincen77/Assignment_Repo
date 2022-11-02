@@ -4,6 +4,8 @@
     import { ref } from 'vue'
 
     const showModal = ref(false)
+
+    const isLoginMenuOpen = ref(false);
 </script>
 
 <template>
@@ -18,9 +20,45 @@
             </template>
         </modal>
         </Teleport>
-        <a class="button is-light" @click="login('Moshe', 'Plotkin')">
-            Log in
-        </a>
+        <div class="dropdown" :class="{ 'is-active' : isLoginMenuOpen}">
+            <div class="dropdown-trigger">
+                <button class="button" aria-haspopup="true" aria-controls="dropdown-menu3" @click="isLoginMenuOpen = !isLoginMenuOpen">
+                <span>Login</span>
+                <span class="icon is-small">
+                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                </span>
+                </button>
+            </div>
+            <div class="dropdown-menu" id="dropdown-menu3" role="menu">
+                <div class="dropdown-content">
+                <a href="#" class="dropdown-item">
+                    Overview
+                </a>
+                <a href="#" class="dropdown-item">
+                    Modifiers
+                </a>
+                <a href="#" class="dropdown-item">
+                    Grid
+                </a>
+                <a href="#" class="dropdown-item">
+                    Form
+                </a>
+                <a href="#" class="dropdown-item">
+                    Elements
+                </a>
+                <a href="#" class="dropdown-item">
+                    Components
+                </a>
+                <a href="#" class="dropdown-item">
+                    Layout
+                </a>
+                <hr class="dropdown-divider">
+                <a href="#" class="dropdown-item">
+                    More
+                </a>
+                </div>
+            </div>
+            </div>
     </div>
     <div v-else>
         <div class="avatar">
@@ -33,6 +71,29 @@
 
 </template>
 
+<!-- <div class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+    <div class="dropdown is-active">
+        <div class="dropdown-trigger">
+            <span>Log In</span>
+            <span class="icon is-small">
+                <i class="fas fa-angle-down" aria-hidden="true"></i>
+            </span>
+            <div v-if="session.user == null" class="dropdown-menu" id="dropdown-menu" role="menu" dropdown="isActive">
+                <div class="dropdown-content">
+                    <a href="#" class="dropdown-item" @click="login('Vincent', 'Miranda')">
+                        Vincent Miranda
+                    </a>
+                    <a href="#" class="dropdown-item" @click="login('Billy', 'Smith')">
+                    Billy Smith
+                    </a>
+                    <a href="#" class="dropdown-item" @click="login('Moshe', 'Plotkin')">
+                        Moshe Plotkin
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
 
 <style scoped>
     .button-custom {
