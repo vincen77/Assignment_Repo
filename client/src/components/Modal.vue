@@ -9,14 +9,18 @@ const props = defineProps({
     <div v-if="show" class="modal-mask">
       <div class="modal-wrapper">
         <div class="modal-container">
-            <h1>Sign Up</h1>
+          <header class="modal-card-head">
+            <h1 class="modal-card-title">Sign Up</h1>
+            <button class="delete" aria-label="close" @click="$emit('close')"></button>
+          </header>
+          <section class="modal-card-body">
             <p>Please fill in this form to create an account.</p>
-            <hr>
+            <br>
             <label for="email"><b>Email</b></label>
             <input class="input" type="text" placeholder="Enter Email" name="email" required>
 
             <label for="psw"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="psw" required>
+            <input class="input" type="password" placeholder="Enter Password" name="psw" required>
 
             <label for="psw-repeat"><b>Repeat Password</b></label>
             <input class="input" type="password" placeholder="Repeat Password" name="psw-repeat" required>
@@ -26,11 +30,13 @@ const props = defineProps({
             </label>
 
             <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
-
+          </section>
+            <footer class="modal-card-foot">
             <div class="clearfix">
-                <button class="button is-primary" @click="$emit('close')">Close</button>
-                <button type="submit" class="button is-danger">Coming soon</button>
+                <button class="button is-danger" @click="$emit('close')">Close</button>
+                <button type="submit" class="button is-primary">Coming soon</button>
             </div>
+          </footer>
           </div>
         </div>
       </div>
@@ -38,7 +44,24 @@ const props = defineProps({
 </template>
 
 <style>
+.modal-card-head {
+  background-color: #ffffff;
+  border-bottom: 1px solid #ffffff;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 1rem;
+}
 
+.modal-card-title {
+  color: #000000;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.5;
+  margin-bottom: 0;
+}
 
 .modal-mask {
   position: fixed;
@@ -61,14 +84,14 @@ const props = defineProps({
 
 .modal-container {
   width: 30%;
-  height: 80%; /* Full height */
+  height: 70%; /* Full height */
   margin: 0px auto;
-  padding: 20px 30px;
   background-color: #fff;
   border-radius: 2px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
   transition: all 0.3s ease;
 }
+
 
 .modal-header h3 {
   margin-top: 0;
@@ -78,6 +101,7 @@ const props = defineProps({
 .modal-body {
   margin: 20px 0;
 }
+
 
 /*
  * The following styles are auto-applied to elements with

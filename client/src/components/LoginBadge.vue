@@ -20,41 +20,25 @@
             </template>
         </modal>
         </Teleport>
-        <div class="dropdown" :class="{ 'is-active' : isLoginMenuOpen}">
+        <div class="dropdown" :class="{ 'is-hoverable' : isLoginMenuOpen}">
             <div class="dropdown-trigger">
-                <button class="button" aria-haspopup="true" aria-controls="dropdown-menu3" @click="isLoginMenuOpen = !isLoginMenuOpen">
+                <button class="button" aria-haspopup="true" aria-controls="dropdown-menu4" @click="isLoginMenuOpen = !isLoginMenuOpen">
                 <span>Login</span>
                 <span class="icon is-small">
-                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                    <i class="fa fa-angle-down" aria-hidden="true"></i>
                 </span>
                 </button>
             </div>
-            <div class="dropdown-menu" id="dropdown-menu3" role="menu">
+            <div class="dropdown-menu" id="dropdown-menu4" role="menu">
                 <div class="dropdown-content">
-                <a href="#" class="dropdown-item">
-                    Overview
+                <a href="#" class="dropdown-item" @click="login('Vincent', 'Miranda')">
+                    Vincent Miranda
                 </a>
-                <a href="#" class="dropdown-item">
-                    Modifiers
+                <a href="#" class="dropdown-item" @click="login('Billy', 'Smith')">
+                    Billy Smith
                 </a>
-                <a href="#" class="dropdown-item">
-                    Grid
-                </a>
-                <a href="#" class="dropdown-item">
-                    Form
-                </a>
-                <a href="#" class="dropdown-item">
-                    Elements
-                </a>
-                <a href="#" class="dropdown-item">
-                    Components
-                </a>
-                <a href="#" class="dropdown-item">
-                    Layout
-                </a>
-                <hr class="dropdown-divider">
-                <a href="#" class="dropdown-item">
-                    More
+                <a href="#" class="dropdown-item" @click="login('Moshe', 'Plotkin')">
+                    Moshe Plotkin
                 </a>
                 </div>
             </div>
