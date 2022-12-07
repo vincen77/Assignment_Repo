@@ -13,7 +13,7 @@
         <div class="container">
         <div class="navbar-brand">
           <a class="navbar-item" href="https://bulma.io">
-            <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+            <img src="data:," alt>
           </a>
       
           <a :class="{ 'is-active': isActive }" @click="isActive = !isActive" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
@@ -27,10 +27,6 @@
           <div class="navbar-start">
             <router-link to="/" class="navbar-item">
               Home
-            </router-link>
-
-            <router-link to="/workout" class="navbar-item">
-              Workout
             </router-link>
       
             <router-link class="navbar-item" to="/myactivity">
@@ -79,6 +75,7 @@
 </template>
 
 <style>
+    .router-link-exact-active,
     .router-link-active {
         
         border-bottom: #cf0101 5px solid;

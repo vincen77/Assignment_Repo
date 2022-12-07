@@ -7,6 +7,9 @@ import MyActivityVue from '../views/MyActivity.vue'
 import StoreView from '../views/MyActivity.vue'
 import SignUp from '../views/SignUp.vue'
 import Admin from '../views/Admin.vue'
+import session from '@/stores/session'
+import AccessDenied from '../views/AccessDenied.vue'
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -17,11 +20,6 @@ const router = createRouter({
       component: HomeView
     },
     {
-      path: '/workout',
-      name: 'workout',
-      component: Workout
-    },
-    {
       path: '/about',
       name: 'about',
       component: () => import('../views/AboutView.vue')
@@ -29,7 +27,19 @@ const router = createRouter({
     {
         path: '/myactivity',
         name: 'my activity',
-        component: () => import('../views/MyActivity.vue')
+        component: () => import('../views/MyActivity.vue'),
+        beforeEnter: (to, from, next) => {
+            if (session.user) {
+                next();
+            } else {
+                next('/accessdenied');
+            }
+        } 
+    },
+    {
+      path: '/accessdenied',
+      name: 'access denied',
+      component: AccessDenied
     },
     {
       path: '/friendsactivity',

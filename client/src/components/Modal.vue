@@ -9,34 +9,21 @@ const props = defineProps({
     <div v-if="show" class="modal-mask">
       <div class="modal-wrapper">
         <div class="modal-container">
+
           <header class="modal-card-head">
-            <h1 class="modal-card-title">Sign Up</h1>
+            <slot name="header"></slot>
             <button class="delete" aria-label="close" @click="$emit('close')"></button>
           </header>
+
           <section class="modal-card-body">
-            <p>Please fill in this form to create an account.</p>
-            <br>
-            <label for="email"><b>Email</b></label>
-            <input class="input" type="text" placeholder="Enter Email" name="email" required>
-
-            <label for="psw"><b>Password</b></label>
-            <input class="input" type="password" placeholder="Enter Password" name="psw" required>
-
-            <label for="psw-repeat"><b>Repeat Password</b></label>
-            <input class="input" type="password" placeholder="Repeat Password" name="psw-repeat" required>
-            
-            <label>
-                <input type="checkbox" checked name="remember" style="margin-bottom:15px"> Remember me
-            </label>
-
-            <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+            <slot name="body"></slot>
           </section>
-            <footer class="modal-card-foot">
-            <div class="clearfix">
-                <button class="button is-danger" @click="$emit('close')">Close</button>
-                <button type="submit" class="button is-primary">Coming soon</button>
-            </div>
+
+          <footer class="modal-card-foot">
+            <slot name="footer">
+            </slot>
           </footer>
+
           </div>
         </div>
       </div>
@@ -84,7 +71,6 @@ const props = defineProps({
 
 .modal-container {
   width: 30%;
-  height: 70%; /* Full height */
   margin: 0px auto;
   background-color: #fff;
   border-radius: 2px;
