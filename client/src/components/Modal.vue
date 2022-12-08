@@ -12,7 +12,7 @@ const props = defineProps({
 
           <header class="modal-card-head">
             <slot name="header"></slot>
-            <button class="delete" aria-label="close" @click="$emit('close')"></button>
+            <button class="delete" aria-label="close" type="reset" @click="$emit('close')"></button>
           </header>
 
           <section class="modal-card-body">

@@ -34,10 +34,11 @@
 </script>
 
 <template>
-    <div class="buttons" v-if="session.user == null" @submit.prevent="login(email, password)">
+    <div class="buttons" v-if="session.user == null">
         <button class="button button-custom" id="show-modal" @click="showModal = true" @click.prevent="google_login">Sign Up</button>
 
         <Teleport to="body">
+        <form @submit.prevent="login(email, password)">
         <!-- use the modal component, pass in the prop -->
         <modal :show="showModal" @close="showModal = false">
             <template #header>
@@ -53,13 +54,11 @@
 
             <label for="psw"><b>Password</b></label>
             <div class="control">
-            <input class="input" type="password" placeholder="Enter Password" name="psw" required>
+            <input class="input" type="password" placeholder="Enter Password" name="psw" required v-model="password">
             </div>
 
             <label for="psw-repeat"><b>Repeat Password</b></label>
-            <div class="control">
             <input class="input" type="password" placeholder="Repeat Password" name="psw-repeat" required>
-            </div>
             
             <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
             </template>
@@ -70,10 +69,12 @@
             </template>
 
         </modal>
+        </form>
         </Teleport>
         <button class="button button-custom" id="show-modal" @click="showModal2 = true" @click.prevent="google_login">Log In</button>
 
         <Teleport to="body">
+        <form @submit.prevent="login(email, password)">
         <!-- use the modal component, pass in the prop -->
         <modal :show="showModal2" @close="showModal2 = false">
             <template #header>
@@ -82,11 +83,15 @@
             <template #body>
                 <p>Please enter Login information.</p>
             <br>
-            <label for="email"><b>Email</b></label>
-            <input class="input" type="text" placeholder="Enter Email" name="email" required>
+            <div class="control">
+            <input class="input" type="email" placeholder="Enter Email" name="email" required v-model="email">
+            </div>
 
             <label for="psw"><b>Password</b></label>
-            <input class="input" type="password" placeholder="Enter Password" name="psw" required>
+            <div class="control">
+            <input class="input" type="password" placeholder="Enter Password" name="psw" required v-model="password">
+            </div>
+            
             </template>
 
             <template #footer>
@@ -95,6 +100,7 @@
             </template>
 
         </modal>
+        </form>
         </Teleport>
     </div>
     <div v-else class="profile">

@@ -1,12 +1,65 @@
 <script setup lang="ts">
+import { ref } from 'vue';
+import session from '../stores/session';
+import Modal from './Modal.vue'
 
+const showModal = ref(false)
+
+const activity = { title: '', date: '', duration: '', location: '', type: ''}
 </script>
 
 <template>
-    <div>
-        <h1 class="title">Store View</h1>
-        <p>Store View</p>
-    </div>
+    <main> 
+        <h1 class="title">Welcome {{session.user.email}}!</h1>
+        <h2 class="subtitle">Please add your workout(s) below!</h2>
+    <div class="buttons">
+        <button class="button button-custom" id="show-modal" @click="showModal = true">Add Activity</button>
+        <Teleport to="body">
+        <form id="workout" action="/useractivity" method="post">
+            <fieldset id="fieldset1">
+                <legend>Add Workout</legend>
+                <div class="field">
+                    <label for="title">Title:</label>
+                    <input type="text" name="title" id="title">
+                </div>
+                <div class="field">
+                    <label for="date">Date:</label>
+                    <input type="text" name="date" id="date" placeholder="mm/dd/yyyy">
+                </div>
+                <div class="field">
+                    <label for="duration">Duration:</label>
+                    <input type="text" name="duration" id="duration" placeholder="ex: 15 minutes">
+                </div>
+                <div class="field">
+                    <label for="location">Location:</label>
+                    <input type="text" name="location:" id="location">
+                </div>
+                <div class="field">
+                    <label>Type:</label>
+                    <label for = "RunR"> Run</label>
+                        <input type="checkbox" name ="RunR" id = "RunR" value="RunR">
+                    <label for = "BikeR"> Bike</label>
+                        <input type="checkbox" name ="BikeR" id = "BikeR" value="BikeR">
+                    <label for = "WalkR"> Walk</label>
+                        <input type="checkbox" name ="WalkR" id = "WalkR" value="WalkR">
+                    <label for = "SwimmingR"> Swimming</label>
+                        <input type="checkbox" name="SwimmingR" id = "SwimmingR" value="SwimmingR">
+                    <label for = "StrengthR"> Strength</label>
+                        <input type="checkbox" name="StrengthR" id= "StrengthR" value="StrengthR">
+                </div>
+            </fieldset>
+        </form>
+        <form id="save" action="/useractivity" method="post">
+            <div id="save">
+                <fieldset id="fieldset2">
+                    <input type="submit" id="saveButton" value="Save Changes">
+                    <input type="reset" id="cancelButton" value="Cancel">
+                </fieldset>
+            </div>
+        </form>
+    </Teleport>
+        </div>
+</main>
 </template>
 
 <style scoped>

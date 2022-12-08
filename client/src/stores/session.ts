@@ -1,6 +1,7 @@
 import myFetch from "@/services/myFetch";
 import { computed, reactive } from "vue";
 import router from "@/router";
+import LoginBadgeVue from "@/components/LoginBadge.vue";
 
 const session = reactive( {
     user: null as User | null,

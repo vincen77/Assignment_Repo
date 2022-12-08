@@ -1,0 +1,26 @@
+{
+    "users": [
+    {
+        "first name": "Vincent",
+        "last name": "Miranda",
+        "email": "mirandad4@newpaltz.edu",
+        "handle": "Miranda, Vincent",
+        "isAdmin": "true"
+        
+    },
+    {
+        "first name": "John",
+        "last name": "Doe",
+        "email": "doej@gmail.com",
+        "handle": "Doe, John",
+        "isAdmin": "false"
+    },
+    {
+        "first name": "Moshe",
+        "last name": "Plotkin",
+        "email": "plotkinm1@newpaltz.edu",
+        "handle": "Plotkin, Moshe",
+        "isAdmin": "true"
+    }
+    ]
+}
