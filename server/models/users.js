@@ -1,5 +1,5 @@
 const data = require('../data/users.json');
-const { connect } = require('.mongo');
+const { connect } = require('./mongo');
 const { ObjectId } = require('mongodb');
 
 const COLLECTION_NAME = 'users';
