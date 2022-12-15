@@ -6,7 +6,9 @@ import HomeView from '../views/HomeView.vue'
 import MyActivityVue from '../views/MyActivity.vue'
 import StoreView from '../views/MyActivity.vue'
 import SignUp from '../views/SignUp.vue'
-import Admin from '../views/Admin.vue'
+import UserEdit from '../views/admin/UserEdit.vue'
+import UserImages from '../views/admin/UserImages.vue'
+import UsersListVue from '@/views/admin/UsersList.vue'
 import session from '@/stores/session'
 import AccessDenied from '../views/AccessDenied.vue'
 
@@ -62,9 +64,19 @@ const router = createRouter({
       component: SignUp
     },
     {
-      path: '/admin',
-      name: 'admin',
-      component: Admin
+      path: '/admin/users',
+      name: 'admin_users',
+      component: UsersListVue
+    },
+    {
+      path: '/admin/user/email',
+      name: 'admin_user_edit',
+      component: () => import('../views/admin/UserEdit.vue')
+    },
+    {
+      path: '/admin/user_image/email',
+      name: 'admin_user_images',
+      component: () => import('../views/admin/UserImages.vue')
     }
   ]
 })

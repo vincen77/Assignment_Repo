@@ -8,6 +8,7 @@
 
     const isLoginMenuOpen = ref(false);
 
+    const name = ref('');
     const email = ref('');
     const password = ref('');
 
@@ -38,7 +39,7 @@
         <button class="button button-custom" id="show-modal" @click="showModal = true" @click.prevent="google_login">Sign Up</button>
 
         <Teleport to="body">
-        <form @submit.prevent="login(email, password)">
+        <form @submit.prevent="login(name, email, password)">
         <!-- use the modal component, pass in the prop -->
         <modal :show="showModal" @close="showModal = false">
             <template #header>
@@ -47,6 +48,11 @@
             <template #body>
                 <p>Please fill in this form to create an account.</p>
             <br>
+            <label for="name"><b>Name</b></label>
+            <div class="control">
+            <input class="input" type="name" placeholder="Enter Name" name="name" required v-model="name">
+            </div>
+
             <label for="email"><b>Email</b></label>
             <div class="control">
             <input class="input" type="email" placeholder="Enter Email" name="email" required v-model="email">
@@ -74,7 +80,7 @@
         <button class="button button-custom" id="show-modal" @click="showModal2 = true" @click.prevent="google_login">Log In</button>
 
         <Teleport to="body">
-        <form @submit.prevent="login(email, password)">
+        <form @submit.prevent="login(name, email, password)">
         <!-- use the modal component, pass in the prop -->
         <modal :show="showModal2" @close="showModal2 = false">
             <template #header>
@@ -83,6 +89,12 @@
             <template #body>
                 <p>Please enter Login information.</p>
             <br>
+            <label for="name"><b>Name</b></label>
+            <div class="control">
+            <input class="input" type="name" placeholder="Enter Name" name="name" required v-model="name">
+            </div>
+
+            <label for="email"><b>Email</b></label>
             <div class="control">
             <input class="input" type="email" placeholder="Enter Email" name="email" required v-model="email">
             </div>
@@ -106,7 +118,7 @@
     <div v-else class="profile">
         <img :src="session.user.picture" />
         <span>
-            Welcome {{session.user.email}}!  
+            Welcome {{session.user.name}}!
         </span>
 
         <a class="button button-logout" @click="logout()">

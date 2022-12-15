@@ -14,10 +14,15 @@ async function getUsers(){
     const data = await db.find().toArray()
     return { users: data };
 }
-
-async function getUser(name){
+async function getGender() {
     const db = await collection();
-    const data = await db.findOne({_name: new ObjectId(name) })
+    const data = await db.distinct('gender')
+    return data;
+}
+
+async function getUser(email){
+    const db = await collection();
+    const data = await db.findOne({_email: new ObjectId(email) })
     return data;
 }
 
@@ -27,19 +32,19 @@ async function addUser(user){
     return user;
 }
 
-async function updateUser(name, user){
+async function updateUser(email, user){
     const db = await collection();
-    delete user._name;
+    delete user._email;
     const result = await db.findOneAndUpdate(
-        { _name: new ObjectId(name) },
+        { _email: new ObjectId(email) },
         { $set: user },
         { returnDocument: 'after' })
     return result.value;
 }
 
-async function deleteUser(name){
+async function deleteUser(email){
     const db = await collection();
-    const result = await db.deleteOneO({ _name: new ObjectId(name) })
+    const result = await db.deleteOneO({ _email: new ObjectId(email) })
     return result;
 }
 
@@ -55,7 +60,9 @@ module.exports = {
     getUsers,
     getUser,
     addUser,
+    getGender,
     updateUser,
     deleteUser,
     seed,
 }
+

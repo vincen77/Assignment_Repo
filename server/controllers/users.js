@@ -25,12 +25,12 @@ app
         .then(x=> res.status(200).send(x))
         .catch(next);
     })
-    .patch('/:id', (req, res, next) => {
+    .patch('/:email', (req, res, next) => {
         users.updateUser(req.params.id, req.body)
         .then(x=> res.status(200).send(x))
         .catch(next);
     })
-    .delete('/:id', (req, res, next) => {
+    .delete('/:email', (req, res, next) => {
         users.deleteUser(req.params.id)
         .then(x=> res.status(200).send(x))
         .catch(next);

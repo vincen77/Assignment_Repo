@@ -54,7 +54,7 @@
                 <router-link class="navbar-item" to="/about">
                   About
                 </router-link>
-                <router-link class="navbar-item" to="/admin">
+                <router-link class="navbar-item" to="/admin/users">
                   Admin
                 </router-link>
               </div>
