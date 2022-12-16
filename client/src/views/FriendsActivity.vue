@@ -3,7 +3,7 @@ import { defineComponent, ref, computed } from "vue";
 import { useRoute } from "vue-router";
 import { api } from "@/stores/session";
 import { getUser, type User } from "@/stores/users";
-import { useStore } from "vuex";
+
 </script>
 
 <template>

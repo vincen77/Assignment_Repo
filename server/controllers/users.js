@@ -9,11 +9,16 @@ app
         .then(x=> res.status(200).send(x))
         .catch(next);
     })
-    .get('/:name', (req, res, next) => {
+    .get('/gender', (req, res, next) => {
+        users.getGender()
+        .then(x=> res.status(200).send(x))
+        .catch(next);
+    })
+    .get('/:id', (req, res, next) => {
         users.getUser(req.param.id)
-        .then(product=> {
-            if (product) {
-                res.status(200).send(product);
+        .then(user=> {
+            if (user) {
+                res.status(200).send(user);
             } else {
                 res.status(404).send('User not found');
             }
@@ -25,12 +30,12 @@ app
         .then(x=> res.status(200).send(x))
         .catch(next);
     })
-    .patch('/:email', (req, res, next) => {
+    .patch('/:id', (req, res, next) => {
         users.updateUser(req.params.id, req.body)
         .then(x=> res.status(200).send(x))
         .catch(next);
     })
-    .delete('/:email', (req, res, next) => {
+    .delete('/:id', (req, res, next) => {
         users.deleteUser(req.params.id)
         .then(x=> res.status(200).send(x))
         .catch(next);

@@ -9,7 +9,7 @@
 
     async function deleteUser2(user: User, index: number){
         if(confirm(`Are you sure that you want to delete '${user.name}'?`)){
-            const result = await deleteUser(user._email)
+            const result = await deleteUser(user._id)
             if(result.deletedCount){
                 users.value.splice(index, 1);
                 session.messages.push({ type: "success", text: `Successfully deleted  '${user.name}'`})
@@ -43,11 +43,11 @@
                 
             </thead>
             <tbody>
-                <tr v-for="u, i in users" :key="u._email">
+                <tr v-for="u, i in users" :key="u._id">
                     <td>
                         <img :src="u.thumbnail" class="user-thumbnail" />
                         <b>{{ u.name }}</b> <br />
-                        <RouterLink :to="{ name:'admin_user_images', params:{ email: u._email}}">
+                        <RouterLink :to="{ name:'admin_user_images', params:{ id: u._id}}">
                             ({{ u.images?.length }}) more images
                         </RouterLink>
                         
@@ -63,12 +63,12 @@
                     </td>
                     <td>
                         <div class="buttons has-addons is-small">
-                            <RouterLink class="button"  :to="`../user/${u._email}`" target="_blank" title="View as a user would see it" >
+                            <RouterLink class="button"  :to="`../user/${u._id}`" target="_blank" title="View as a user would see it" >
                                 <span class="icon is-small">
                                     <i class="fas fa-eye"></i>
                                 </span>
                             </RouterLink>
-                            <RouterLink class="button"  :to="`./user/${u._email}`">
+                            <RouterLink class="button"  :to="`./user/${u._id}`">
                                 <span class="icon is-small">
                                     <i class="fas fa-edit"></i>
                                 </span>

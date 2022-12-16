@@ -69,12 +69,12 @@ const router = createRouter({
       component: UsersListVue
     },
     {
-      path: '/admin/user/email',
+      path: '/admin/user/:id',
       name: 'admin_user_edit',
       component: () => import('../views/admin/UserEdit.vue')
     },
     {
-      path: '/admin/user_image/email',
+      path: '/admin/user_image/:id',
       name: 'admin_user_images',
       component: () => import('../views/admin/UserImages.vue')
     }

@@ -9,7 +9,7 @@
     
     const user = ref({} as User);
 
-    getUser(route.params.email as string).then(x => {
+    getUser(route.params.id as string).then(x => {
         if(x){
             user.value = x            
         }

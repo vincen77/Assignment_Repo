@@ -10,10 +10,10 @@
     const router = useRouter();
     
     const user = ref({} as User);
-    const isNew = ref(route.params.email == 'new')
+    const isNew = ref(route.params.id == 'new')
 
     if(!isNew.value){
-        getUser(route.params.email as string).then(x => {
+        getUser(route.params.id as string).then(x => {
             if(x){
                 user.value = x            
             }else{
@@ -32,7 +32,7 @@
                 const data = await addUser(user.value);
                 session.messages.push({ type: "success", text: `Successfully inserted ${data.name}`})
             }else{
-                const data = await updateUser(user.value._email, user.value);
+                const data = await updateUser(user.value._id, user.value);
                 session.messages.push({ type: "success", text: `Successfully updated ${data.name}`})
             }
             await router.push({ name: 'admin_users' });
@@ -66,7 +66,7 @@
                         <div class="field-body">
                             <div class="field">
                                 <p class="control is-expanded has-icons-left">
-                                    <input class="input" type="text" placeholder="Title" v-model="user.name">
+                                    <input class="input" type="text" placeholder="Ex: John Smith" v-model="user.name">
                                     <span class="icon is-small is-left">
                                         <i class="fas fa-user"></i>
                                     </span>
@@ -84,7 +84,7 @@
                                     <p class="control">
                                     </p>
                                     <p class="control is-expanded">
-                                        <input class="input" type="tel" placeholder="Email"  v-model="user.email">
+                                        <input class="input" type="tel" placeholder="email"  v-model="user.email">
                                     </p>
                                 </div>
                         </div>
@@ -99,7 +99,7 @@
                             <div class="field">
                                 <div class="control">
                                     <div class="select is-fullwidth">
-                                        <select  v-model="User.brand">
+                                        <select  v-model="user.gender">
                                             <option :value="undefined">-- Please Select a Gender --</option>
                                             <option v-for="b in gender" :key="b">{{b}}</option>
                                         </select>
@@ -150,7 +150,7 @@
                 </div>
                 <div class="user-info">
 
-                    <p class="email subtitle">
+                    <p class="id subtitle">
                         <span class="text">{{ user.email }}</span>
                     </p>
                     <p>{{ user.description }}</p>
